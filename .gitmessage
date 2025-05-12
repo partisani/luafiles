@@ -1,0 +1,4 @@
+type(scope)?: short summary
+
+# types: feat, fix, refactor, meta
+# scope: lua, config, asset
