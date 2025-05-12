@@ -1,0 +1,33 @@
+; # Information Widget
+; * Battery, CPU, RAM
+; * Workspaces
+; * Volume, Power, MiniSound
+
+(defwindow status
+    :monitor 0
+    :stacking "fg"
+    :windowtype "dock"
+    :geometry (geometry
+               :y "2%"
+               :width "20%"
+               :height "30%"
+               :anchor "top center")
+    (status-widget))
+
+(defwidget status-widget []
+    (box :orientation "v" :class "status"
+         (status-top)
+         (status-middle)
+         (status-bottom)))
+
+(defwidget status-top []
+    (box :orientation "h"
+         "BAT" "CPU" "RAM"))
+
+(defwidget status-middle []
+    (box :orientation "h"
+         "󰄰" "󰐾" "󰄰"))
+
+(defwidget status-bottom []
+    (box :orientation "h"
+         "BAT" "CPU" "RAM"))
