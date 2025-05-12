@@ -1,4 +1,6 @@
-type(scope)?: short summary
+[...]type(scope): short summary
+
+# add ellipsis to refer to lost files/features
 
 # types: feat, fix, refactor, meta
 # scope: lua, config, asset
