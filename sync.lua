@@ -11,12 +11,10 @@ return {
     process = function(text, filename)
         local _, match_end, directives = text:find("^@ (.-) @\n")
         if directives then
-            text = text:sub(match_end)
+            text = text:sub(match_end + 1)
             directives = load("return " .. directives)()
 
-            print(filename)
             filename = directives.filename
-            print(filename)
         end
     
         local res = text:gsub("@%|(.-)%|@", function(s)

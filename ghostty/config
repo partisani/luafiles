@@ -1,36 +1,36 @@
 # Theming #
-font-family = Iosevka Ultra
+font-family = @|return font.mono|@
 font-size = 13
 
 adjust-cell-height = 20%
 
-foreground = #8b9cbe
-background = #22262d
-
-cursor-color = #8b9cbe
-cursor-text = #17191E
+cursor-color = @|return theme[5]|@
+cursor-text = @|return theme[0]|@
 cursor-style = block
 
-selection-foreground = #8b9cbe
-selection-background = #383a47
+background = @|return theme[1]|@
+foreground = @|return theme[5]|@
 
-palette = 0=#17191E
-palette = 1=#ff29a8
-palette = 2=#0badff
-palette = 3=#f0ffaa
-palette = 4=#00eaff
-palette = 5=#00f6d9
-palette = 6=#8265ff
-palette = 7=#8b9cbe
+selection-background = @|return theme[2]|@
+selection-foreground = @|return theme[0]|@
 
-palette = 8=#383a47
-palette = 9=#ff29a8
-palette = 10=#0badff
-palette = 11=#f0ffaa
-palette = 12=#00eaff
-palette = 13=#00f6d9
-palette = 14=#8265ff
-palette = 15=#f4f4f7
+palette = 0=@|return theme[0]|@
+palette = 1=@|return theme[8]|@
+palette = 2=@|return theme[11]|@
+palette = 3=@|return theme[10]|@
+palette = 4=@|return theme[13]|@
+palette = 5=@|return theme[14]|@
+palette = 6=@|return theme[12]|@
+palette = 7=@|return theme[5]|@
+
+palette = 8=@|return theme[3]|@
+palette = 9=@|return theme[8]|@
+palette = 10=@|return theme[11]|@
+palette = 11=@|return theme[10]|@
+palette = 12=@|return theme[13]|@
+palette = 13=@|return theme[14]|@
+palette = 14=@|return theme[12]|@
+palette = 15=@|return theme[7]|@
 
 window-padding-x = 10
 window-padding-y = 10

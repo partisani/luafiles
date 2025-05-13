@@ -1,7 +1,6 @@
-
 ## Theming ##
-text-color = #B2BFD9
-selection-color = #ff29a8
+text-color = @|return theme[6]|@
+selection-color = @|return theme[8]|@
 
 ## Windowing ##
 width = "100%"

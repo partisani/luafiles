@@ -24,7 +24,7 @@ output "eDP-1" {
 }
 
 output "VGA-1" {
-    mode "1366x768@60.00"
+    mode "1920x1080@60.00"
     scale 1
     transform "normal"
     position x=-1366 y=0
@@ -48,8 +48,8 @@ layout {
     border {
         width 2
 
-        active-gradient from="#383a4733" to="#f4f4f766" angle=30
-        inactive-color "#3c3f4c"
+        active-gradient from="@|return theme[3]|@33" to="@|return theme[9]|@aa" angle=30
+        inactive-color "@|return theme[2]|@"
     }
 
     /-struts {
@@ -101,7 +101,7 @@ window-rule {
     geometry-corner-radius 5 // Border Size
     clip-to-geometry true
 
-    opacity 0.95
+    opacity 0.9
     draw-border-with-background false
 }
 
