@@ -5,7 +5,8 @@ return {
     config_path = config_path,
     config_dir = config_dir,
     apps = {
-        term = "ghostty"
+        term = "ghostty",
+        editor = "kak"
     },
     theme = dofile(config_dir .. "assets/themes/base16.lua")("vice"),
     font = {

@@ -2,11 +2,17 @@
 
 # Misc #
 
+# Env #
+
 # Adding entries to path
 use std "path add"
 path add ~/scripts/
 path add ~/.cargo/bin/
 path add ~/.local/bin/
+
+# Changing the default editor
+$env.VISUAL = "@|return apps.editor|@"
+$env.EDITOR = "@|return apps.editor|@"
 
 # Aliases #
 
