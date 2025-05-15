@@ -12,7 +12,20 @@ function map(t, fn)
     return res
 end
 
+-- helper
+function dedup(t)
+    local seen = {}
+    for index,item in ipairs(t) do
+    	if seen[item] then
+    		table.remove(t, index)
+    	else
+    		seen[item] = true
+    	end
+    end
+end
+
 local usr = dofile "conf.lua"
+dedup(usr.theme)
 
 local theme_str = table.concat(
     map(usr.theme, function(v) return '"'..v..'"' end), " ")

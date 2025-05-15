@@ -8,7 +8,7 @@ return {
         term = "ghostty",
         editor = "kak"
     },
-    theme = dofile(config_dir .. "assets/themes/base16.lua")("vice"),
+    theme = dofile(config_dir .. "assets/themes/homemade.lua")("serika-glow"),
     font = {
         mono = "Iosevka Ultra"
     }

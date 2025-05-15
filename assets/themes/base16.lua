@@ -11,7 +11,7 @@ function os.capture(cmd, raw)
 end
 
 return function(scheme)
-    local command = "yq -o=lua '.' assets/themes/schemes/base16/" .. scheme .. ".yaml"
+    local command = "yq -o=lua '.' assets/themes/base16-schemes/base16/" .. scheme .. ".yaml"
     scheme = load(os.capture(command))()
 
     local palette = scheme.palette
