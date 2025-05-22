@@ -1,3 +1,12 @@
-.status {
-    background: #22262d;
+* {
+    all: unset;
+    font-family: "Symbols Nerd Font";
+
+    color: @|return theme.hex6|@;
+    font-size: 11pt;
+}
+
+.bar *,
+tooltip {
+    text-shadow: 2px 2px @|return theme.hex1|@;
 }

@@ -1,9 +1,0 @@
-## Theming ##
-text-color = @|return theme[6]|@
-selection-color = @|return theme[8]|@
-
-## Windowing ##
-width = "100%"
-height = "100%"
-
-anchor = left

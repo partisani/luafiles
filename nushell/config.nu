@@ -10,9 +10,10 @@ path add ~/scripts/
 path add ~/.cargo/bin/
 path add ~/.local/bin/
 
-# Changing the default editor
+# Changing the default apps
 $env.VISUAL = "@|return apps.editor|@"
 $env.EDITOR = "@|return apps.editor|@"
+$env.TERMINAL = "@|return apps.term|@"
 
 # Aliases #
 

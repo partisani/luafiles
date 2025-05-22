@@ -1,33 +1,49 @@
-; # Information Widget
-; * Battery, CPU, RAM
-; * Workspaces
-; * Volume, Power, MiniSound
-
-(defwindow status
+;; Bar inspired by https://www.reddit.com/r/unixporn/comments/1krt7hz/cwm_my_quiet_space/
+(defwindow bar
     :monitor 0
-    :stacking "fg"
+    :stacking "bg"
     :windowtype "dock"
     :geometry (geometry
-               :y "2%"
-               :width "20%"
-               :height "30%"
-               :anchor "top center")
-    (status-widget))
+               :y "15%"
+               :width "100%"
+               :anchor "bottom center")
+    (eventbox :onhover "eww update bar-show-hidden=true"
+              :onhoverlost "eww update bar-show-hidden=false"
+              (bar-widget)))
 
-(defwidget status-widget []
-    (box :orientation "v" :class "status"
-         (status-top)
-         (status-middle)
-         (status-bottom)))
-
-(defwidget status-top []
+(defwidget bar-widget []
     (box :orientation "h"
-         "BAT" "CPU" "RAM"))
+         :space-evenly false
+         :spacing 10 :halign "center"
+         "󰥔  ${time}"
+         "󱐋 ${EWW_BATTERY.BAT0.capacity}%"
+         ":::::::::::::::::::::::::"
+         { date }
+         (revealer :transition "slideleft"
+                   :duration "500ms"
+                   :reveal { bar-show-hidden }
+                   (bar-hidden))))
 
-(defwidget status-middle []
+(defwidget bar-hidden []
     (box :orientation "h"
-         "󰄰" "󰐾" "󰄰"))
+         :space-evenly false
+         :spacing 10 :halign "center"
+         ""
+         (tooltip :class "tooltip" audio-display audio-bars)
+         (systray)))
 
-(defwidget status-bottom []
-    (box :orientation "h"
-         "BAT" "CPU" "RAM"))
+;; Bar variables
+
+(defvar bar-show-hidden false)
+
+(defpoll time :interval "5s"
+  `date +%H:%M`)
+
+(defpoll date :interval "2h"
+  `date +%d.%m.%y`)
+
+(deflisten audio-display :initial "N/A"
+  `playerctl metadata -f "Playing: {{ title }} - {{ artist }}" -F`)
+
+(deflisten audio-bars :initial "N/A"
+  `scripts/audio`)

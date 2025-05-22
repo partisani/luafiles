@@ -24,7 +24,7 @@ output "eDP-1" {
 }
 
 output "VGA-1" {
-    mode "1920x1080@60.00"
+    mode "1366x768@60.00"
     scale 1
     transform "normal"
     position x=-1366 y=0
@@ -65,10 +65,12 @@ layout {
 
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swww-daemon"
+spawn-at-startup "eww" "open" "bar" "--screen" "0" "--id" "main"
+spawn-at-startup "eww" "open" "bar" "--screen" "1" "--id" "vga"
 
 prefer-no-csd // Remove decorations.
 
-screenshot-path "~/files/Pictures/Screenshots/screenshot-%d.%m.%Y %H:%M:%S.png"
+screenshot-path "~/files/pictures/screenshots/screenshot-%d.%m.%Y %H:%M:%S.png"
 
 animations {
     slowdown 0.8
@@ -113,7 +115,7 @@ binds {
     // As a rule of thumb, Mod5 is for moving things around
     // or for special binds, and Mod is for everything else.
     Mod+Q { spawn "ghostty"; }
-    Mod+R { spawn "nu" "-c" "tofi-drun | nu -c $in"; }
+    Mod+R { spawn "fuzzel"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }

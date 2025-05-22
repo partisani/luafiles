@@ -4,6 +4,8 @@ font-size = 13
 
 adjust-cell-height = 20%
 
+background-opacity = 0.7
+
 cursor-color = @|return theme[5]|@
 cursor-text = @|return theme[0]|@
 cursor-style = block
@@ -32,7 +34,7 @@ palette = 13=@|return theme[14]|@
 palette = 14=@|return theme[12]|@
 palette = 15=@|return theme[7]|@
 
-window-padding-x = 10
-window-padding-y = 10
+window-padding-x = 20
+window-padding-y = 20
 
 #  #
