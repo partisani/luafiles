@@ -37,4 +37,5 @@ palette = 15=@|return theme[7]|@
 window-padding-x = 20
 window-padding-y = 20
 
-#  #
+# Keybinds #
+keybind=ctrl+a=toggle_quick_terminal

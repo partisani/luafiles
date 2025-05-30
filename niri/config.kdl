@@ -31,6 +31,8 @@ output "VGA-1" {
 }
 
 layout {
+    background-color "transparent"
+
     gaps 30
     center-focused-column "never"
 
@@ -43,13 +45,17 @@ layout {
 
     default-column-width {}
 
-    focus-ring { off; }
+    focus-ring {
+        width 5
+
+        active-color "@|return theme.hex5|@66"
+    }
 
     border {
-        width 2
+        width 7
 
-        active-gradient from="@|return theme[3]|@33" to="@|return theme[9]|@aa" angle=30
-        inactive-color "@|return theme[2]|@"
+        active-color "#00000000"
+        inactive-color "#00000000"
     }
 
     /-struts {
@@ -94,7 +100,7 @@ window-rule {
 
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match title="^Picture-in-Picture$"
     open-floating true
 }
 
@@ -105,6 +111,18 @@ window-rule {
 
     opacity 0.9
     draw-border-with-background false
+}
+
+// Make the background keep its place while in the overview
+layer-rule {
+    match namespace="^swww-daemon$"
+    place-within-backdrop true
+}
+
+overview {
+    backdrop-color "@|return theme.hex1|@"
+
+    workspace-shadow { off; }
 }
 
 environment {
@@ -123,6 +141,8 @@ binds {
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     Mod+C { close-window; }
+    
+    Mod5+E { toggle-overview; }
 
     Mod+A           { focus-column-left; }
     Mod+S           { focus-window-or-workspace-down; }

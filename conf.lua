@@ -9,7 +9,7 @@ local conf = {
         editor = "kak"
     },
     theme = dofile(config_dir .. "assets/themes/base16.lua")
-            ("grayscale-dark"),
+            ("nord"),
     font = {
         mono = "Iosevka Ultra"
     }
