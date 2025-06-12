@@ -45,18 +45,14 @@ layout {
 
     default-column-width {}
 
-    focus-ring {
-        width 5
-
-        active-color "@|return theme.hex5|@66"
-    }
-
     border {
-        width 7
+        width 3
 
-        active-color "#00000000"
-        inactive-color "#00000000"
+        active-color "@|return theme.hex7|@66"
+        inactive-color "@|return theme.hex3|@33"
     }
+
+    focus-ring { off; }
 
     /-struts {
         left 30
@@ -71,8 +67,6 @@ layout {
 
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swww-daemon"
-spawn-at-startup "eww" "open" "bar" "--screen" "0" "--id" "main"
-spawn-at-startup "eww" "open" "bar" "--screen" "1" "--id" "vga"
 
 prefer-no-csd // Remove decorations.
 
@@ -80,6 +74,20 @@ screenshot-path "~/files/pictures/screenshots/screenshot-%d.%m.%Y %H:%M:%S.png"
 
 animations {
     slowdown 0.8
+
+    window-open {
+        duration-ms 250
+        curve "linear"
+
+        custom-shader r"@|return io.open("niri/window_open.glsl"):read("*all")|@"
+    }
+
+    window-close {
+        duration-ms 250
+        curve "linear"
+
+        custom-shader r"@|return io.open("niri/window_close.glsl"):read("*all")|@"
+    }
 }
 
 // Add dropdowns.
@@ -104,12 +112,18 @@ window-rule {
     open-floating true
 }
 
+// Make Pure Data menus floating by default.
+window-rule {
+    match app-id="^Menu$"
+    open-floating true
+}
+
 // All of them.
 window-rule {
-    geometry-corner-radius 5 // Border Size
+    geometry-corner-radius 3 // Border Size
     clip-to-geometry true
 
-    opacity 0.9
+    opacity 0.95
     draw-border-with-background false
 }
 

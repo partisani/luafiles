@@ -1,4 +1,13 @@
 local inspect = require("inspect")
+local data = dofile "conf.lua"
+
+-- Stolen from stack overflow: https://stackoverflow.com/questions/1283388/how-to-merge-two-tables-overwriting-the-elements-which-are-in-both
+function merge(a, b)
+    if type(a) == 'table' and type(b) == 'table' then
+        for k,v in pairs(b) do if type(v)=='table' and type(a[k] or false)=='table' then merge(a[k],v) else a[k]=v end end
+    end
+    return a
+end
 
 return {
     targets = {
@@ -6,7 +15,9 @@ return {
                                          -- <target>/<dir>/<file> as in ~/.config/ghostty/config
         misc = { target = "~/.config/" },
         home = { target = "~/" },
+        
         assets = { skip = true },
+        widgets = { skip = true }
     },
     process = function(text, filename)
         local _, match_end, directives = text:find("^@ (.-) @\n")
@@ -18,7 +29,7 @@ return {
         end
     
         local res = text:gsub("@%|(.-)%|@", function(s)
-            local fn = assert(load(s, nil, nil, dofile "conf.lua"))
+            local fn = assert(load(s, nil, nil, merge(_G, data)))
             return fn(env)
         end)
 
