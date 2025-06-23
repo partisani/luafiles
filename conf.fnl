@@ -2,10 +2,11 @@
 (local config-dir :/home/partisani/config/)
 
 (local conf
-       { :apps {:editor :kak :term :ghostty}
+       { :distro "I USE ARCH BTW"
+         :apps { :editor "kak" :term "ghostty" }
          :config_dir config-dir
          :config_path config-path
-         :font {:mono "Iosevka Ultra"}
+         :font { :mono "Iosevka Ultra" }
          :theme ((require :assets.themes.base16) :rose-pine-moon nil)
                   ;; If #2 is non-nil, use base24. As a convention,
                   ;; set it to :base24 for ease of understanding.
