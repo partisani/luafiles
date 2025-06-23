@@ -12,21 +12,40 @@ function map(t, fn)
     return res
 end
 
-local usr = dofile "conf.lua"
+local usr = require "conf"
 
 local theme_str = table.concat(
     map(usr.theme, function(v) return '"'..v..'"' end), " ")
 
 return {
     wallpapers = {
-        command = fmt(
-            "lutgen apply assets/walls/* --output=$HOME/generated/walls -G -i=64 -- %s",
+        commands = fmt(
+            [[
+            # Create sub-directories
+            fd . ./ --type d --base-directory ~/config/assets/walls/
+            | split row "\n"
+            | each {|dir|
+                let dir = $dir | str substring 2.. 
+                $"($env.HOME)/generated/walls/($dir)"
+            } | each { ^mkdir -p $in } | print null
+
+            lutgen generate --output=/tmp/clut.png -G -i=128 -m=2.0 -s=80.0 -- %s
+            
+            fd . ./ --type f --base-directory ~/config/assets/walls/
+            | split row "\n"
+            | each {|file|
+                let file = $file | str substring 2..
+                [ $"($env.HOME)/config/assets/walls/($file)"
+                  $"($env.HOME)/generated/walls/($file)" ]
+            } | par-each { lutgen apply $in.0 -o=$"($in.1)" --hald-clut /tmp/clut.png | print } | print null
+            ]],
             theme_str
         ),
+        shell = "nu"
     },
     gen_clut = {
         command = fmt(
-            "lutgen generate --output=$HOME/games/ultrakill/Palettes/Self.png -G -m=0.2 -s=40 -i=16 -- %s",
+            "lutgen generate --output=$HOME/games/ultrakill/Palettes/Self.png -l 2 -- %s",
             theme_str
         ),
     },

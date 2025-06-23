@@ -1,5 +1,4 @@
-local inspect = require("inspect")
-local data = dofile "conf.lua"
+local data = require "conf"
 
 -- Stolen from stack overflow: https://stackoverflow.com/questions/1283388/how-to-merge-two-tables-overwriting-the-elements-which-are-in-both
 function merge(a, b)
@@ -17,7 +16,6 @@ return {
         home = { target = "~/" },
         
         assets = { skip = true },
-        widgets = { skip = true }
     },
     process = function(text, filename)
         local _, match_end, directives = text:find("^@ (.-) @\n")

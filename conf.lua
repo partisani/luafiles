@@ -8,8 +8,9 @@ local conf = {
         term = "ghostty",
         editor = "kak"
     },
-    theme = dofile(config_dir .. "assets/themes/base16.lua")
-            ("vice"),
+    theme = require "assets.themes.base16"
+                ("rose-pine-moon", nil), -- if second argument is non-nil, use base24
+            -- require "assets.themes.homemade" "eink",
     font = {
         mono = "Iosevka Ultra"
     }
@@ -21,6 +22,9 @@ setmetatable(conf.theme, {
         -- tbl.nhxN should return RRGGBB
         -- tbl.rawN should return {float R, float G, float B}
         -- tbl.rgbN should return rgb(R, G, B)
+
+        if tonumber(k) then return end
+        
         local methods = {
             hex = function(c) return c end,
             nhx = function(c) return c:sub(2) end,
