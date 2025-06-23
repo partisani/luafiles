@@ -11,9 +11,9 @@ path add ~/.cargo/bin/
 path add ~/.local/bin/
 
 # Changing the default apps
-$env.VISUAL = "@|return apps.editor|@"
-$env.EDITOR = "@|return apps.editor|@"
-$env.TERMINAL = "@|return apps.term|@"
+$env.VISUAL = "@| return apps.editor |@"
+$env.EDITOR = "@| return apps.editor |@"
+$env.TERMINAL = "@| return apps.term |@"
 
 # Aliases #
 
@@ -36,7 +36,7 @@ $env.PROMPT_COMMAND = {||
 
     let path_col = (ansi lub)
     let path_sep = "/"
-
+    
     $path | str replace -a (char path_sep) $path_sep | $"($path_col)[" + $in + "]"
 }
 $env.PROMPT_INDICATOR = " "

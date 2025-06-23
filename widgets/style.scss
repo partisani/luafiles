@@ -1,3 +1,8 @@
 * {
     all: unset;
+    font-family: monospace;
+}
+
+.textbar * {
+    text-shadow: @| return theme[7] |@;
 }

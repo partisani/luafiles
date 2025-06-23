@@ -48,8 +48,8 @@ layout {
     border {
         width 3
 
-        active-color "@|return theme.hex7|@66"
-        inactive-color "@|return theme.hex3|@33"
+        active-color "@| return theme.hex7 |@66"
+        inactive-color "@| return theme.hex3 |@33"
     }
 
     focus-ring { off; }
@@ -79,14 +79,14 @@ animations {
         duration-ms 250
         curve "linear"
 
-        custom-shader r"@|return io.open("niri/window_open.glsl"):read("*all")|@"
+        custom-shader r"@| return io.open("niri/window_open.glsl"):read("*all") |@"
     }
 
     window-close {
         duration-ms 250
         curve "linear"
 
-        custom-shader r"@|return io.open("niri/window_close.glsl"):read("*all")|@"
+        custom-shader r"@| return io.open("niri/window_close.glsl"):read("*all") |@"
     }
 }
 
@@ -134,13 +134,14 @@ layer-rule {
 }
 
 overview {
-    backdrop-color "@|return theme.hex1|@"
+    backdrop-color "@| return theme.hex1 |@"
 
     workspace-shadow { off; }
 }
 
 environment {
     DISPLAY ":1"
+    GSK_RENDERER "gl"
 }
 
 binds {
