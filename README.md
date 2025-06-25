@@ -22,6 +22,7 @@
 * colorscheme: [all](https://tinted-theming.github.io/tinted-gallery) [of](https://github.com/partisani/luafiles/tree/main/assets/themes/homemade-schemes) [them](https://www.youtube.com/watch?v=xvFZjo5PgG0)
 
 <h2 align="center">resources</h2>
+
 * wallpapers:
-    * wallhaven (these can be found via reverse search)
-    * [dharmx's wallpaper collection](https://github.com/dharmx/walls)
+* wallhaven (these can be found via reverse search)
+* [dharmx's wallpaper collection](https://github.com/dharmx/walls)
