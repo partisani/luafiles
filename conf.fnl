@@ -7,7 +7,7 @@
          :config_dir config-dir
          :config_path config-path
          :font { :mono "Iosevka Ultra" }
-         :theme ((require :assets.themes.base16) :rose-pine-moon nil)
+         :theme ((require :assets.themes.base16) :rose-pine-dawn nil)
                   ;; If #2 is non-nil, use base24. As a convention,
                   ;; set it to :base24 for ease of understanding.
                 ; ((require :assets.themes.homemade :eink))
