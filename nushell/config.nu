@@ -11,9 +11,9 @@ path add ~/.cargo/bin/
 path add ~/.local/bin/
 
 # Changing the default apps
-$env.VISUAL = "@| return apps.editor |@"
-$env.EDITOR = "@| return apps.editor |@"
-$env.TERMINAL = "@| return apps.term |@"
+$env.VISUAL = "#<< apps.editor >>"
+$env.EDITOR = "#<< apps.editor >>"
+$env.TERMINAL = "#<< apps.term >>"
 
 # Aliases #
 
@@ -21,7 +21,11 @@ alias la = ls -a
 alias ll = ls -l
 
 def l [...rest] {
-    ls ...$rest | sort-by type | grid -cis " \\ "
+    print (ls ...$rest | sort-by type | grid -cis " \\ ")
+}
+
+def --env jmp [ --relative (-r) ] {
+    cd (fd -t d . (if $relative { "." } else { "/" }) | sk)
 }
 
 # Aesthetics #

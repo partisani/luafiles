@@ -1,4 +1,5 @@
 (local data (require :conf))
+(local fennel (require :fennel))
 
 ;; Stolen from stack overflow: https://stackoverflow.com/questions/1283388/how-to-merge-two-tables-overwriting-the-elements-which-are-in-both
 (fn merge [a b]
@@ -17,14 +18,15 @@
            }
   :process (fn [text filename]
             (var [text filename] [text filename]) ; Shadowed
-            (var (_ match-end directives) (text:find "^@ (.-) @\n"))
+            (var (_ match-end directives) (text:find "^#%+(.-)\n"))
             (when directives
               (set text (text:sub (+ match-end 1)))
-              (set directives ((load (.. "return " directives))))
+              (set directives (fennel.eval directives))
               (set filename directives.filename))
-            (local res (text:gsub "@%|(.-)%|@"
+            (local res (text:gsub "#%<%<(.-)%>%>"
                                   (fn [s]
-                                    (let [compiled (load s nil nil (merge _G data))
-                                          func (assert compiled)]
+                                    (let [luacomp (load s nil nil (merge _G data))
+                                          fnlcomp #(fennel.eval s { :env (merge _G data) })
+                                          func (assert (or fnlcomp luacomp))]
                                         (func)))))
             (values res filename)) }

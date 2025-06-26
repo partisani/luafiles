@@ -48,8 +48,8 @@ layout {
     border {
         width 3
 
-        active-color "@| return theme.hex7 |@66"
-        inactive-color "@| return theme.hex3 |@33"
+        active-color "#<< theme.hex7 >>66"
+        inactive-color "#<< theme.hex3 >>33"
     }
 
     focus-ring { off; }
@@ -73,20 +73,20 @@ prefer-no-csd // Remove decorations.
 screenshot-path "~/files/pictures/screenshots/screenshot-%d.%m.%Y %H:%M:%S.png"
 
 animations {
-    slowdown 0.8
+    slowdown 1.25
 
     window-open {
         duration-ms 250
         curve "linear"
 
-        custom-shader r"@| return io.open("niri/window_open.glsl"):read("*all") |@"
+        custom-shader r"#<< (: (io.open "niri/window_open.glsl") :read "*all") >>"
     }
 
     window-close {
         duration-ms 250
         curve "linear"
 
-        custom-shader r"@| return io.open("niri/window_close.glsl"):read("*all") |@"
+        custom-shader r"#<< (: (io.open "niri/window_close.glsl") :read "*all") >>"
     }
 }
 
@@ -134,8 +134,7 @@ layer-rule {
 }
 
 overview {
-    backdrop-color "@| return theme.hex1 |@"
-
+    zoom 0.5
     workspace-shadow { off; }
 }
 
@@ -147,7 +146,7 @@ environment {
 binds {
     // As a rule of thumb, Mod5 is for moving things around
     // or for special binds, and Mod is for everything else.
-    Mod+Q { spawn "ghostty"; }
+    Mod+Q { spawn "#<< apps.term >>"; }
     Mod+R { spawn "fuzzel"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }

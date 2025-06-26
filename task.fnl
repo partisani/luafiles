@@ -8,7 +8,9 @@
 
 (local usr (require :conf))
 (local theme-str
-    (table.concat (map usr.theme #(.. "\"" $1 "\"")) " "))
+    (table.concat (collect [k v (pairs usr.theme)]
+                    (if (tonumber k)
+                        (values (+ 1 k) (.. "\"" v "\"")))) " "))
 
 ;;; Tasks
 

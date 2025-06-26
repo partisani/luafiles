@@ -4,5 +4,5 @@
 }
 
 .textbar * {
-    text-shadow: @| return theme[7] |@;
+    text-shadow: #<< (theme 7) >>;
 }
