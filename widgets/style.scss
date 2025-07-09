@@ -3,6 +3,27 @@
     font-family: monospace;
 }
 
-.textbar * {
-    text-shadow: #<< (theme 7) >>;
+.panel {
+    padding: 20px;
+    margin: 10px;
+    background: #<< theme.hex1 >>;
+    color: #<< theme.hex6 >>;
+    border-radius: 5px;
+    border: 3px solid #<< theme.hex7 >>66;
 }
+
+.cover-art {
+    min-width: 120px;
+    min-height: 120px;
+
+    margin: 10px;
+
+    background-size: contain;
+    background-position: center;
+    background-color: #ffffff05;
+
+    border-radius: 10px;
+}
+
+.size-4 { font-size: 34pt; font-weight: 800; }
+.bold { font-weight: 800; }
