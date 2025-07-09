@@ -4,7 +4,7 @@
   (tset env k v))
 (tset env :conf (require :conf))
 (fn env.repl [self opts] ; Simple fennel.repl wrapper
-  ((coroutine.wrap #(fennel.repl { :env self ...opts }))))
+  ((coroutine.wrap #(fennel.repl { :readChunk coroutine.yield :env self ...opts }))))
 
 (local socket (require :posix.sys.socket))
 (local unistd (require :posix.unistd))
