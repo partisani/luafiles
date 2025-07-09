@@ -17,7 +17,7 @@
 ;;   COLORC as you already
 ;;   COLORD noticed, there
 ;;   COLORE wasn't enough
-;;   COLORF space for it...
+;;   COLORF space for it... just kidding, this can be as big as you want because i decided that
 ;;   
 ;;   but now i have space for anything else down there >:)
 
