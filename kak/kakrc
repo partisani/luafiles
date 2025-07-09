@@ -12,6 +12,9 @@ set-face global LineNumberCursor yellow,default,default
 # Highlight all search matches
 add-highlighter global/search dynregex '%reg{/}' 0:+b
 
+# Add soft-wrapping
+add-highlighter global/wrap wrap -word -indent -width 80 -marker ' -> '
+
 # Make cursor yellow on Insert mode
 hook global BufCreate .* %{
     hook buffer ModeChange (push|pop):insert:.* %{
