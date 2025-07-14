@@ -7,8 +7,8 @@
     res))
 
 (local usr (require :conf))
-(local theme-str
-    (table.concat (collect [k v (pairs usr.theme)]
+(local scheme-str
+    (table.concat (collect [k v (pairs usr.scheme)]
                     (if (tonumber k)
                         (values (+ 1 k) (.. "\"" v "\"")))) " "))
 
@@ -17,7 +17,7 @@
 { ;; Generate a small CLUT and save as an ULTRAKILL palette.
   :gen_clut { :command
              (fmt "lutgen generate --output=$HOME/games/ultrakill/Palettes/Self.png -l 2 -- %s"
-                  theme-str)}
+                  scheme-str)}
   
   ;; Apply a CLUT based on the current color scheme to every wallpaper
   ;; and save it to the correct subdirectory in parallel.
@@ -39,5 +39,5 @@
                     [ $\"($env.HOME)/config/assets/walls/($file)\"
                       $\"($env.HOME)/generated/walls/($file)\" ]
                 } | par-each { lutgen apply $in.0 -o=$\"($in.1)\" --hald-clut /tmp/clut.png | print } | print null
-                " theme-str)
+                " scheme-str)
                   :shell :nu }}

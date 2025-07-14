@@ -8,40 +8,40 @@
             
             :adjust-cell-height "20%"
 
-            :background-opacity 0.0
+            :background-opacity 1
 
-            :cursor-color (usr.theme 5)
-            :cursor-text (usr.theme 0)
+            :cursor-color (usr.scheme 5)
+            :cursor-text (usr.scheme 0)
             :cursor-style :block
 
-            :background (usr.theme 1)
-            :foreground (usr.theme 5)
+            :background (usr.scheme 1)
+            :foreground (usr.scheme 5)
 
-            :selection-background (usr.theme 2)
-            :selection-foreground (usr.theme 0)
+            :selection-background (usr.scheme 2)
+            :selection-foreground (usr.scheme 0)
 
-            :palette { 0 (usr.theme 0)
-                       1 (usr.theme 8)
-                       2 (usr.theme 11)
-                       3 (usr.theme 10)
-                       4 (usr.theme 13)
-                       5 (usr.theme 14)
-                       6 (usr.theme 12)
-                       7 (usr.theme 5)
-                       8 (usr.theme 2)
-                       9  (or (usr.theme 18) (usr.theme 8))
-                       10 (or (usr.theme 20) (usr.theme 11))
-                       11 (or (usr.theme 19) (usr.theme 10))
-                       12 (or (usr.theme 22) (usr.theme 13))
-                       13 (or (usr.theme 23) (usr.theme 14))
-                       14 (or (usr.theme 21) (usr.theme 12))
-                       15 (or (usr.theme 7)  (usr.theme 7))
-                       16 (or (usr.theme 9)  (usr.theme 9))
-                       17 (or (usr.theme 15) (usr.theme 15))
-                       18 (or (usr.theme 1)  (usr.theme 1))
-                       19 (or (usr.theme 2)  (usr.theme 2))
-                       20 (or (usr.theme 4)  (usr.theme 4))
-                       21 (or (usr.theme 6)  (usr.theme 6)) }
+            :palette { 0 (usr.scheme 0)
+                       1 (usr.scheme 8)
+                       2 (usr.scheme 11)
+                       3 (usr.scheme 10)
+                       4 (usr.scheme 13)
+                       5 (usr.scheme 14)
+                       6 (usr.scheme 12)
+                       7 (usr.scheme 5)
+                       8 (usr.scheme 2)
+                       9  (or (usr.scheme 18) (usr.scheme 8))
+                       10 (or (usr.scheme 20) (usr.scheme 11))
+                       11 (or (usr.scheme 19) (usr.scheme 10))
+                       12 (or (usr.scheme 22) (usr.scheme 13))
+                       13 (or (usr.scheme 23) (usr.scheme 14))
+                       14 (or (usr.scheme 21) (usr.scheme 12))
+                       15 (or (usr.scheme 7)  (usr.scheme 7))
+                       16 (or (usr.scheme 9)  (usr.scheme 9))
+                       17 (or (usr.scheme 15) (usr.scheme 15))
+                       18 (or (usr.scheme 1)  (usr.scheme 1))
+                       19 (or (usr.scheme 2)  (usr.scheme 2))
+                       20 (or (usr.scheme 4)  (usr.scheme 4))
+                       21 (or (usr.scheme 6)  (usr.scheme 6)) }
 
             :bold-is-bright :true
 

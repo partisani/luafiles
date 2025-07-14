@@ -6,14 +6,14 @@
          :apps { :editor "kak" :term "ghostty" }
          :config_dir config-dir
          :config_path config-path
-         :font { :mono "Iosevka Ultra" :serif "Iosevka Ultra" :sans-serif "Iosevka Ultra" }
-         :theme ((require :assets.themes.base16) :black-metal-bathory nil)
+         :font { :mono "Iosevka Manet" :serif "Iosevka Manet" :sans-serif "Iosevka Manet" }
+         :scheme ((require :assets.schemes.base16) :black-metal-bathory nil)
                   ;; If #2 is non-nil, use base24. As a convention,
                   ;; set it to :base24 for ease of understanding.
-                ;((require :assets.themes.homemade) :backlight-amber)
+                ;((require :assets.schemes.homemade) :backlight-amber)
         })
 
-;; Allows theme to be indexed by:
+;; Allows scheme to be indexed by:
 ;; tbl.{method}N where N is a number between 0..F
 (local methods
        { :hex (fn [c] c)
@@ -30,7 +30,7 @@
 ;; methods.{method}(tbl(N)) or (methods.{method} (tbl N)) that allows usage of
 ;; these previously defined methods in other contexts and for numbers > 0xF
 
-(setmetatable conf.theme
+(setmetatable conf.scheme
   { :__index (fn [tbl k]
                "tbl.hexN should return #RRGGBB.
                 tbl.nhxN should return RRGGBB.

@@ -48,8 +48,8 @@ layout {
     border {
         width 3
 
-        active-color "#<< theme.hex7 >>66"
-        inactive-color "#<< theme.hex3 >>33"
+        active-color "transparent"
+        inactive-color "transparent" // "#<< scheme.hex1 >>77"
     }
 
     focus-ring { off; }
@@ -90,6 +90,15 @@ animations {
     }
 }
 
+// All of them.
+window-rule {
+    geometry-corner-radius 3 // Border Size
+    clip-to-geometry true
+
+    opacity 0.9
+    draw-border-with-background true
+}
+
 // Add dropdowns.
 window-rule {
     match app-id="^dropdown$"
@@ -118,13 +127,9 @@ window-rule {
     open-floating true
 }
 
-// All of them.
+// Active
 window-rule {
-    geometry-corner-radius 3 // Border Size
-    clip-to-geometry true
-
-    opacity 0.95
-    draw-border-with-background false
+    match is-active=true
 }
 
 // Make the background keep its place while in the overview
