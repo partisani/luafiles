@@ -11,7 +11,7 @@
 
 (fn [scheme use24]
   (var scheme scheme) ; Shadowed
-  (let [command (.. "yq -o=lua eval '... comments=\"\"' assets/themes/base16-schemes/base"
+  (let [command (.. "yq -o=lua eval '... comments=\"\"' assets/schemes/base16-schemes/base"
                     (if use24 "24/" "16/") scheme :.yaml)]
     (set scheme ((load (os.capture command))))
     (local palette scheme.palette)

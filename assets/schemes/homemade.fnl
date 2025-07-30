@@ -22,7 +22,7 @@
 ;;   but now i have space for anything else down there >:)
 
 (fn [scheme]
-  (io.input (.. :assets/themes/homemade-schemes/ scheme))
+  (io.input (.. :assets/schemes/homemade-schemes/ scheme))
   (var colors {})
   (let [text (io.read :*all)]
     (each [line (text:gmatch "[^\n]+")]

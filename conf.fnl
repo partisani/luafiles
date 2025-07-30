@@ -6,12 +6,13 @@
          :apps { :editor "kak" :term "ghostty" }
          :config_dir config-dir
          :config_path config-path
-         :font { :mono "Iosevka Manet" :serif "Iosevka Manet" :sans-serif "Iosevka Manet" }
-         :scheme ((require :assets.schemes.base16) :black-metal-bathory nil)
+         :font { :mono "Fantasque Sans Mono" :serif "Fantasque Sans Mono" :sans-serif "Fantasque Sans Mono" }
+         :scheme ;((require :assets.schemes.base16) :rose-pine-moon nil)
                   ;; If #2 is non-nil, use base24. As a convention,
                   ;; set it to :base24 for ease of understanding.
-                ;((require :assets.schemes.homemade) :backlight-amber)
+                 ((require :assets.schemes.homemade) :charcoal-dark)
         })
+(set _G.conf conf)
 
 ;; Allows scheme to be indexed by:
 ;; tbl.{method}N where N is a number between 0..F
@@ -43,5 +44,8 @@
                (local color (. tbl num))
                ((. methods method) color))
     :__call #(. $1 $2) })
+
+;; Apply themes
+(require :assets.themes.transparent)
 
 conf
