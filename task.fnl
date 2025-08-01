@@ -30,7 +30,7 @@
                     $\"($env.HOME)/generated/walls/($dir)\"
                 } | each { ^mkdir -p $in } | print null
 
-                lutgen generate --output=/tmp/clut.png -G -i=128 -m=2.0 -s=80.0 -- %s
+                lutgen generate --output=/tmp/clut.png -l 8 -- %s
                 
                 fd . ./ --type f --base-directory ~/config/assets/walls/
                 | split row \"\\n\"
