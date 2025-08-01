@@ -1,3 +1,7 @@
+;; Loaded modules
+(local module (. package :loaded))
+
 ;; Ghostty
-(doto (require :ghostty.gen)
-  (set :background-opacity 0))
+(require :ghostty.gen)
+(local ghostty (. module :ghostty.gen :cfg))
+(set ghostty.background-opacity 0)
