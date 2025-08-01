@@ -9,6 +9,7 @@ use std "path add"
 path add ~/scripts/
 path add ~/.cargo/bin/
 path add ~/.local/bin/
+path add ~/.bin
 
 # Changing the default apps
 $env.VISUAL = "#<< apps.editor >>"
@@ -20,8 +21,8 @@ $env.TERMINAL = "#<< apps.term >>"
 alias la = ls -a
 alias ll = ls -l
 
-def l [...rest] {
-    print (ls ...$rest | sort-by type | grid -cis " \\ ")
+def luadbg [ file: string ] {
+    lua -e ("require('debugger').call(function() loadfile('" + $file + "')() end)")
 }
 
 def --env jmp [ --relative (-r) ] {
@@ -56,3 +57,6 @@ $env.LS_COLORS = ""
 
 # Remove welcome banner
 $env.config.show_banner = false
+
+# Make hints readable in `transparent` theme
+$env.config.color_config.hints = "light_gray"

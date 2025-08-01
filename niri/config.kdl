@@ -34,7 +34,9 @@ layout {
     background-color "transparent"
 
     gaps 30
-    center-focused-column "never"
+
+    always-center-single-column
+    center-focused-column "on-overflow"
 
     preset-column-widths {
         proportion 0.33333
@@ -45,21 +47,17 @@ layout {
 
     default-column-width {}
 
-    border {
-        width 3
+    tab-indicator {
+        length total-proportion=0.75
+        active-color "#<< scheme.hex8 >>"
+    }
 
+    border {
         active-color "transparent"
         inactive-color "transparent" // "#<< scheme.hex1 >>77"
     }
 
     focus-ring { off; }
-
-    /-struts {
-        left 30
-        right 30
-        top 30
-        bottom 30
-    }
 }
 
 // Add a few startup programs later...
