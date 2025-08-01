@@ -1,1 +1,1 @@
-#<< (require :ghostty.gen) >>
+#<< (: (require :ghostty.gen) :gen) >>

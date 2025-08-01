@@ -1,5 +1,4 @@
-;; Returns a table of files that should be generated
-(local usr (require :conf))
+(local usr (or _G.conf (require :conf)))
 
 (local cfg {
             ;; Theming
@@ -59,4 +58,6 @@
          (table.concat (icollect [ik iv (pairs v)]
            (.. k " = " ik "=" iv)) "\n"))))  ; (key=vk=vv)*
 
-(table.concat (gen cfg) "\n")
+{ : cfg
+  :gen (fn [self]
+         (table.concat (gen self.cfg) "\n")) }
