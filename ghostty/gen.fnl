@@ -5,7 +5,7 @@
             :font-family usr.font.mono
             :font-size 11
             
-            :adjust-cell-height "20%"
+            :adjust-cell-height "50%"
 
             :background-opacity 1
 
@@ -13,7 +13,7 @@
             :cursor-text (usr.scheme 0)
             :cursor-style :block
 
-            :background (usr.scheme 1)
+            :background (usr.scheme 0)
             :foreground (usr.scheme 5)
 
             :selection-background (usr.scheme 2)
@@ -46,6 +46,8 @@
 
             :window-padding-x 20
             :window-padding-y 20
+            
+            :window-theme :ghostty
 
             ;; Keybinds
             :keybind { :ctrl+a :toggle_quick_terminal }

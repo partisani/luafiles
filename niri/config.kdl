@@ -53,8 +53,8 @@ layout {
     }
 
     border {
-        active-color "transparent"
-        inactive-color "transparent" // "#<< scheme.hex1 >>77"
+        active-color "#<< scheme.hex0 >>77"
+        inactive-color "#<< scheme.hex0 >>77"
     }
 
     focus-ring { off; }
@@ -123,11 +123,6 @@ window-rule {
 window-rule {
     match app-id="^Menu$"
     open-floating true
-}
-
-// Active
-window-rule {
-    match is-active=true
 }
 
 // Make the background keep its place while in the overview

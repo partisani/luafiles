@@ -7,10 +7,10 @@
          :config_dir config-dir
          :config_path config-path
          :font { :mono "Fantasque Sans Mono" :serif "Fantasque Sans Mono" :sans-serif "Fantasque Sans Mono" }
-         :scheme ((require :assets.schemes.base16) :charcoal-light nil)
+         :scheme ((require :assets.schemes.base16) :nord nil)
                   ;; If #2 is non-nil, use base24. As a convention,
                   ;; set it to :base24 for ease of understanding.
-                 ;((require :assets.schemes.homemade) :charcoal-light)
+                 ;((require :assets.schemes.homemade) :bloody)
         })
 (set _G.conf conf)
 
@@ -46,6 +46,6 @@
     :__call #(. $1 $2) })
 
 ;; Apply themes
-(require :assets.themes.transparent)
+(require :assets.themes.flat)
 
 conf
