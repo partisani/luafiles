@@ -2,15 +2,15 @@
 (local config-dir :/home/partisani/config/)
 
 (local conf
-       { :distro "I USE ARCH BTW"
-         :apps { :editor "kak" :term "ghostty" }
+       { :distro "going to void"
+         :apps { :editor "kak" :term "ghostty" :launcher "fuzzel" }
          :config_dir config-dir
          :config_path config-path
-         :font { :mono "Fantasque Sans Mono" :serif "Fantasque Sans Mono" :sans-serif "Fantasque Sans Mono" }
-         :scheme ((require :assets.schemes.base16) :nord nil)
+         :font { :mono "Envy Code R" :serif "Envy Code R" :sans-serif "Envy Code R" }
+         :scheme ((require :assets.schemes.base16) :black-metal-bathory nil)
                   ;; If #2 is non-nil, use base24. As a convention,
                   ;; set it to :base24 for ease of understanding.
-                 ;((require :assets.schemes.homemade) :bloody)
+                 ;((require :assets.schemes.homemade) :eink)
         })
 (set _G.conf conf)
 

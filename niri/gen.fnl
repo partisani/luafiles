@@ -91,18 +91,18 @@
                  (option* :curve :linear)
                  (option* :custom-shader
                           (: (io.open "niri/window_close.glsl") :read "a"))))
-    
+         
+     ;; Ghostty default size
+     (node :window-rule
+           (option :match { :app-id "^com.mitchellh.ghostty$" })
+           (node :default-column-width (option* :proportion 0.5)))
+
      ;; General 
      (node :window-rule
            (option* :geometry-corner-radius 3)
            (option* :clip-to-geometry true)
            (option* :opacity 0.9)
            (option* :draw-border-with-background true))
-     
-     ;; Ghostty default size
-     (node :window-rule
-           (option :match { :app-id "^com\\.mitchell\\.ghostty$" })
-           (node :default-column-width (option* :proportion 0.5)))
     
      ;; Make `swww-daemon` stay in place while in the overview
      (node :layer-rule
