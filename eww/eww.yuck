@@ -1,0 +1,32 @@
+(defpoll date :interval "30s"
+              :initial "today"
+    `date +"%e de %B (%a)"`)
+
+(defpoll time :interval "30s"
+              :initial "today"
+    `date +"%H:%M"`)
+
+(deflisten cava :initial "..........."
+    `scripts/cava`)
+
+(defwindow status-monitor
+  :monitor 0
+  :stacking "fg"
+  :wm-ignore true
+  :geometry (geometry
+              :width "300px"
+              :height "200px"
+              :x "15px"
+              :y "15px"
+              :anchor "bottom left")
+  :focusable false
+  :namespace "status"
+  (label :halign "start" :valign "end"
+         :unindent true :style "font-size: 8pt;"
+         :markup "
+<span weight='heavy'>partisani@ark</span>
+-------------
+os: arch linux
+date: ${date} ∖
+      ${time}
+${cava}"))
