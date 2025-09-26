@@ -22,7 +22,7 @@
   :focusable false
   :namespace "status"
   (label :halign "start" :valign "end"
-         :unindent true :style "font-size: 8pt;"
+         :unindent true :style "font-size: 7pt; color: #<< scheme.hex9 >>;"
          :markup "
 <span weight='heavy'>partisani@ark</span>
 -------------

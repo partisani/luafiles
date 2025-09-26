@@ -68,11 +68,11 @@
            
            (node :tab-indicator
                  (option :length { :total-proportion 0.75 })
-                 (option* :active-color (usr.scheme 8)))
+                 (option* :active-color usr.scheme.hex8))
      
            (node :border
-                 (option* :active-color (.. (usr.scheme 0) :77))
-                 (option* :inactive-color (.. (usr.scheme 0) :77)))
+                 (option* :active-color (.. usr.scheme.hex0 :77))
+                 (option* :inactive-color (.. usr.scheme.hex0 :77)))
      
            (node :focus-ring
                  (flag :off)))
@@ -96,6 +96,11 @@
      (node :window-rule
            (option :match { :app-id "^com.mitchellh.ghostty$" })
            (node :default-column-width (option* :proportion 0.5)))
+     
+     ;; Fix pure data windows
+     (node :window-rule
+           (option :match { :app-id "^Menu$" })
+           (option* :open-floating true))
 
      ;; General 
      (node :window-rule
@@ -119,7 +124,7 @@
      
      (node :binds
          (node :Mod+Q (option* :spawn usr.apps.term))
-         (node :Mod+R (option* :spawn usr.apps.launcher))
+         (node :Mod+R (option* :spawn "sh" "-c" "cd config; launch"))
          (node :Mod+C (flag :close-window))
          (node :Mod5+E (flag :toggle-overview))
  
@@ -365,6 +370,7 @@
   : node
   : flag
   : option
+  : option*
   : query-selector
   : node->string
   : value->string }

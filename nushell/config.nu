@@ -9,17 +9,29 @@ use std "path add"
 path add ~/scripts/
 path add ~/.cargo/bin/
 path add ~/.local/bin/
-path add ~/.bin
+path add ~/.bin/
 
 # Changing the default apps
 $env.VISUAL = "#<< apps.editor >>"
 $env.EDITOR = "#<< apps.editor >>"
 $env.TERMINAL = "#<< apps.term >>"
+$env.LAUNCHER = "#<< apps.launcher >>"
+$env.LAUNCHER_ANY = "#<< apps.launcher_any >>"
+$env.LAUNCHER_CHOICE = "#<< apps.launcher_choice >>"
 
 # Aliases #
 
 alias la = ls -a
 alias ll = ls -l
+
+def --wrapped l [ ...rest ] {
+    mut rest = $rest
+    if ($rest | length | $in == 0) {
+        $rest = [ "." ]
+    }
+    
+    ls ...$rest | sort-by type | grid -cs "  .  "
+}
 
 def luadbg [ file: string ] {
     lua -e ("require('debugger').call(function() loadfile('" + $file + "')() end)")
@@ -45,7 +57,6 @@ $env.PROMPT_COMMAND = {||
     $path | str replace -a (char path_sep) $path_sep | $"($path_col)[" + $in + "]"
 }
 $env.PROMPT_INDICATOR = " "
-$env.PROMPT_COMMAND_RIGHT = ""
 
 $env.TRANSIENT_PROMPT_COMMAND = $"(ansi lub)[#]"
 
@@ -60,3 +71,6 @@ $env.config.show_banner = false
 
 # Make hints readable in `transparent` theme
 $env.config.color_config.hints = "light_gray"
+
+# Fetch #
+kotofetch

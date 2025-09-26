@@ -1,0 +1,13 @@
+[display]
+horizontal_padding = 3
+vertical_padding = 1
+width = 50
+show_translation = "english"
+translation_color = "#888888"
+font_size = "medium"
+bold = true
+border = false
+source = true
+modes = ["proverb", "anime"]
+seed = 0
+centered = true
