@@ -16,10 +16,10 @@
 * wm/de: [niri](https://github.com/YaLTeR/niri)
 * term: [ghostty](https://ghostty.org)
 * shell: [nushell](https://nushell.sh)
-* editor: [kak](https://kakoune.org)
 -->
-* launcher: [fuzzel](https://codeberg.org/dnkl/fuzzel)i
+* editor: [kak](https://kakoune.org)
 <!--
+* launcher: [fuzzel](https://codeberg.org/dnkl/fuzzel)
 * font: [iosevka](https://typeof.net/Iosevka)
 * widgets: [astal](https://aylur.github.io/astal)
 -->
