@@ -1,4 +1,0 @@
-threshold = 10
-
-[templates]
-colors = { template = "colors.txt", target = "/tmp/colors.txt" }
