@@ -1,0 +1,11 @@
+#!/usr/bin/env lua
+
+local inspect = require "inspect"
+
+local init = require "init"
+
+log(INFO, "writing files")
+for fname, content in pairs(init.files) do
+    log(TEXT, "writing", fname)
+    write(fname:gsub("^(~)", os.getenv("HOME")), content)
+end
