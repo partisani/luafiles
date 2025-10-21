@@ -30,3 +30,7 @@ hook global WinSetOption filetype=(?!makefile).* %{
     map global insert <tab> '<a-;><a-gt>'
     map global insert <s-tab> '<a-;><a-lt>'
 }
+
+# Start LSP
+eval %sh{kak-lsp}
+lsp-enable
