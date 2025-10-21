@@ -7,11 +7,10 @@ return function(name)
     end
 
     return {
-        base00 = words[1],  base01 = words[2],  base02 = words[3],
-        base03 = words[4],  base04 = words[5],  base05 = words[6],
-        base06 = words[7],  base07 = words[8],  base08 = words[9],
-        base09 = words[10], base0A = words[11], base0B = words[12],
-        base0C = words[13], base0D = words[14], base0E = words[15],
-        base0F = words[16],
+        name = name,
+        [0] = words[1],  words[2],  words[3],  words[4],
+              words[5],  words[6],  words[7],  words[8],
+              words[9],  words[10], words[11], words[12],
+              words[13], words[14], words[15], words[16]
     }
 end
