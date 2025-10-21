@@ -1,0 +1,30 @@
+#!/usr/bin/env lua
+
+local inspect = require "inspect"
+
+local init = require "init"
+
+for taskname, task in pairs(init.tasks) do
+    log(INFO, "running", taskname)
+
+    if task.run then
+        log(HIDE, "running function")
+        task.run()
+    end
+
+    if task.cmd then
+        log(HIDE, "running command `", task.cmd, "`")
+        exec(task.cmd)
+    end
+
+    if task.cmds then
+        log(TEXT, "running [...] with `", task.shell or "bash", "`")
+        
+        local tmp = io.open("/tmp/cmd", "w")
+        tmp:write(task.cmds)
+        tmp:close()
+
+        exec("chmod +x /tmp/cmd")
+        exec((task.shell or "bash") .. " /tmp/cmd")
+    end
+end

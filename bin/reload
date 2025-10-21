@@ -1,0 +1,4 @@
+#!/bin/env rc
+./bin/sync
+./bin/task
+swww restore
