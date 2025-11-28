@@ -1,0 +1,79 @@
+(defpoll time :interval "5s"
+              :initial "23:99"
+    `LC_ALL=pt_BR.UTF-8 date +"%H:%M (%a)"`)
+
+(defpoll date :interval "10s"
+              :initial "25.25.25"
+    `LC_ALL=pt_BR.UTF-8 date +"%d.%m.%Y"`)
+
+(deflisten music :initial "N/A"
+  `playerctl metadata -f "{{ title }} - {{ artist }}" -F`)
+
+;;; TOPBAR
+
+(defwindow topbar [mon]
+    :monitor mon
+    :geometry (geometry :y "0%"
+                        :width "100%"
+                        :anchor "top center")
+    :stacking "fg"
+    :exclusive true
+    (centerbox (topbar-actions) time (topbar-status)))
+
+(defwidget topbar-actions []
+    (box :halign "start"
+         :space-evenly false
+         :spacing 10
+         (button :onclick "cd ::path::; bin/launch" "Apps")))
+
+(defwidget topbar-status []
+    (box :halign "end"
+         :space-evenly false
+         :spacing 10
+         (systray :icon-size 10)
+         "Wifi"))
+
+;;; STATUS
+
+(defvar status-show-hidden false)
+
+(defwindow status [mon]
+    :monitor mon
+    :geometry (geometry :y "15%"
+                        :width "100%"
+                        :anchor "bottom center")
+    :stacking "bg"
+    (status-widget))
+
+(defwidget status-widget []
+    (eventbox :onhover "eww update status-show-hidden=true"
+              :onhoverlost "eww update status-show-hidden=false"
+      (box :halign "center"
+        (status-left)
+        (tooltip :halign "center"
+                 :class "status-popup"
+                 " ${music}"
+                 "\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:")
+        (status-right))))
+
+(defwidget status-left []
+    (box :halign "end"
+         :space-evenly false
+         :spacing 10
+         " ${time}"
+         "󱐋 ${EWW_BATTERY.BAT0.capacity}%"))
+
+(defwidget status-right []
+    (box :space-evenly false
+         :spacing 10
+      "${date}"
+      (revealer :transition "slideleft"
+                :duration   "500ms"
+                :reveal     { status-show-hidden }
+        (status-hidden))))
+
+(defwidget status-hidden []
+    (box :space-evenly false
+         :spacing 10
+      ""
+      (systray)))
