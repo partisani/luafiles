@@ -1,19 +1,21 @@
-# Fix theme contrast
-set-face global   PrimarySelection black,blue+F
-set-face global SecondarySelection black,green+F
-set-face global     MenuForeground black,blue+d
-set-face global     MenuBackground black,white
-set-face global           MenuInfo black
+# Nicer colorscheme
+colorscheme plain
 
 # Add line numbers
 add-highlighter global/ln number-lines -relative -hlcursor -separator "  " -min-digits 3
 set-face global LineNumberCursor yellow,default,default
 
+# Put statusbar on top
+set global ui_options terminal_status_on_top=true
+
 # Highlight all search matches
 add-highlighter global/search dynregex '%reg{/}' 0:+b
 
 # Add soft-wrapping
-add-highlighter global/wrap wrap -word -indent -width 80 -marker ' -> '
+#add-highlighter global/wrap wrap -word -indent -width 80 -marker ' -> '
+
+# Show soft-limit column
+add-highlighter global/lim column 80 default,black+d
 
 # Make cursor yellow on Insert mode
 hook global BufCreate .* %{
@@ -34,3 +36,7 @@ hook global WinSetOption filetype=(?!makefile).* %{
 # Start LSP
 eval %sh{kak-lsp}
 lsp-enable
+lsp-inlay-diagnostics-enable global
+
+# Custom bindings
+map global user l ":enter-user-mode lsp<ret>" -docstring "lsp mode"

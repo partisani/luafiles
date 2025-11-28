@@ -21,7 +21,7 @@ output "VGA-1" {
 
 layout {
     background-color "transparent"
-    gaps 30
+    gaps ::niri.gaps::
     center-focused-column "on-overflow"
 
     preset-column-widths {
@@ -41,19 +41,32 @@ layout {
     focus-ring { off; }
 
     border {
-        off
+        width ::niri.border.width or 0::
+
+        active-color "::niri.border.color_active::"
+        inactive-color "::niri.border.color_inactive::"
     }
 
-    /-struts {
-        left 30
-        right 30
-        top 30
-        bottom 30
+    tab-indicator {
+        position "::niri.tab_indicator.pos or "top"::"
+
+        active-color "::scheme.hex8::77"
+
+        width ::niri.tab_indicator.width or 4::
+        length total-proportion=::string.format("%f", niri.tab_indicator.len)::
+
+        gaps-between-tabs ::niri.tab_indicator.gap::
     }
 }
 
-spawn-at-startup "swww-daemon"
-spawn-at-startup "pipewire"
+::
+table.concat(
+    imap(niri.startup, function(cmd)
+        return "spawn-sh-at-startup \"" .. cmd .. "\""
+    end),
+    "\n"
+)
+::
 
 prefer-no-csd
 
@@ -83,10 +96,12 @@ layer-rule {
 }
 
 binds {
-    Mod+Q { spawn "::apps.term::"; }
-    Mod+R { spawn "::apps.launcher::"; }
-    Mod+C repeat=false { close-window; }
+    Mod+Q               { spawn-sh "GTK_IM_MODULE=simple ::apps.term::"; }
+    Mod+R               { spawn-sh "cd ::path::; bin/launch"; }
+    Mod+MouseMiddle     { spawn-sh "cd ::path::; bin/launch"; }
+    Mod+C  repeat=false { close-window; }
     Mod5+E repeat=false { toggle-overview; }
+
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
@@ -185,7 +200,7 @@ binds {
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
+    Mod5+Shift+E { spawn-sh "swaylock"; }
 
     Mod+Shift+P { power-off-monitors; }
 }

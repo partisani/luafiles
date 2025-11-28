@@ -1,6 +1,7 @@
 <?xml version='1.0'?>
 <!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>
 <fontconfig>
+    <!-- patterns -->
     <match target="pattern">
         <test name="family" qual="any">
             <string>sans-serif</string>
@@ -25,4 +26,15 @@
             <string>::font.mono::</string>
         </edit>
     </match>
+
+    <!-- scan -->
+    <match target="scan">
+        <test name="family" qual="any">
+            <string>::font.mono::</string>
+        </test>
+        <edit mode="assign" name="spacing">
+            <int>100</int>
+        </edit>
+    </match>
+
 </fontconfig>
