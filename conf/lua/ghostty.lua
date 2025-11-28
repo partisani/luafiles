@@ -6,7 +6,7 @@ return function(tbl)
                 return k .. " = " .. v
             else
                 return table.unpack(
-                    map(v, function(iv, _, ik)
+                    imap(v, function(iv, _, ik)
                         return k .. " = " .. ik .. "=" .. iv
                     end)
                 )
