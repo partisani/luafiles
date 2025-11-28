@@ -1,0 +1,17 @@
+#!/bin/env lua
+
+if not pcall(debug.getlocal, 4, 1) then
+    -- `menu` was executed via the shell
+    require "posix.unistd".chdir("/home/partisani/config")
+    require "init"
+
+    exec(conf.apps.launcher)
+end
+
+-- `menu` was required from another file
+return function(tbl)
+    local text = table.concat(tbl, "\n")
+    write("/tmp/menu.txt", text)
+
+    return sh("cat /tmp/menu.txt | " .. conf.apps.launcher)
+end

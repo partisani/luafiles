@@ -1,0 +1,40 @@
+#!/bin/env lua
+
+require "init"
+
+local desktop = require "util.desktop"
+local menu = require "bin.menu"
+
+-- from list of tables to "dict" of tables
+local apps = kmap(desktop.apps(), function(v)
+    return v.name, v
+end)
+
+local appnames = imap(apps, function(a) return a.name end)
+
+local sel = menu(appnames)
+
+local app = apps[sel]
+
+if app then
+    exec(desktop.exec(app, "", {
+        terminal = conf.apps.term .. " -e",
+        url = conf.apps.browser,
+    }))
+else
+    local handler = {}
+
+    for _, h in ipairs(init.handlers) do
+        if h.match(sel) then
+            handler = h
+            goto skip
+        end
+    end
+    ::skip::
+
+    if not handler then
+        exec(sel)
+    end
+
+    handler.run(sel)
+end

@@ -1,4 +1,4 @@
-#!/bin/env rc
-./bin/sync
-./bin/task
+#!/bin/env sh
+bin/sync
+bin/task
 swww restore

@@ -5,7 +5,19 @@ local inspect = require "inspect"
 local init = require "init"
 
 log(INFO, "writing files")
-for fname, content in pairs(init.files) do
-    log(TEXT, "writing", fname)
-    write(fname:gsub("^(~)", os.getenv("HOME")), content)
+for path, content in pairs(init.files) do
+
+    if path:match("/$") then
+        log(TEXT, path)
+        assert(type(content) == "table", path .. " is a directory but content is not a table")
+        
+        for file, content in pairs(content) do
+            log(HIDE, "`-- writing", file)
+            
+            write(path:gsub("^(~)", os.getenv("HOME")) .. file, content)
+        end
+    else
+        log(TEXT, "writing", path)
+        write(path:gsub("^(~)", os.getenv("HOME")), content)
+    end
 end
