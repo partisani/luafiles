@@ -8,7 +8,7 @@ local function scheme_metatable(scheme)
             -- tbl.rawN should return {float R, float G, float B}
 
             if tonumber(k) then return end
-            
+
             local methods = {
                 hex = function(c) return c end,
                 rgb = function(c) return c:sub(2) end,
@@ -19,10 +19,13 @@ local function scheme_metatable(scheme)
                     return {r, g, b}
                 end
             }
+
             local method = k:sub(1,1) .. k:sub(2,2) .. k:sub(3,3)
             local num = tonumber(k:sub(4,4), 24)
 
             local color = tbl[num]
+
+            if not color then return nil end
 
             return methods[method](color)
         end
