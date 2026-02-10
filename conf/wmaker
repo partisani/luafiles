@@ -1,0 +1,23 @@
+{
+  FTitleBack = (hgradient, "::scheme.hex0::", "::scheme.hex8::");
+  FTitleColor = "::scheme.hex5::";
+  UTitleBack = (solid, "::scheme.hex1::");
+  UTitleColor = "::scheme.hex6::";
+  PTitleBack = (solid, "::scheme.hex8::");
+  PTitleColor = "::scheme.hex5::";
+  MenuTextBack = (solid, "::scheme.hex1::");
+  MenuTextColor = "::scheme.hex7::";
+  IconTitleBack = "::scheme.hex0::";
+  IconTitleColor = "::scheme.hex7::";
+  MenuTitleBack = (hgradient, "::scheme.hex0::", "::scheme.hex8::");
+  MenuTitleColor = "::scheme.hex5::";
+  HighlightTextColor = "::scheme.hex6::";
+  HighlightColor = "::scheme.hex8::";
+  MenuDisabledColor = "::scheme.hex4::";
+  ClipTitleColor = "::scheme.hex7::";
+  IconBack = (dgradient, "::scheme.hex8::", "::scheme.hex0::");
+  ResizebarBack = (solid, "::scheme.hex0::");
+  MenuStyle = singletexture;
+  WorkspaceBack = (solid, "::scheme.hex1::");
+  FrameBorderColor = "::scheme.hex0::";
+}

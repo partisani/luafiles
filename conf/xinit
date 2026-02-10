@@ -1,0 +1,5 @@
+setxkbmap br -model thinkpad
+pipewire &
+wmclock &
+wmmon &
+dbus-run-session wmaker
