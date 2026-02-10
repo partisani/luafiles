@@ -10,6 +10,7 @@ local dirs = {
     "/usr/share/applications",
     "/usr/local/share/applications",
     "/var/lib/flatpak/exports/share/applications",
+    home .. "/files/desktop",
     home .. "/.local/share/applications",
     home .. "/.local/share/flatpak/exports/share/applications",
 }

@@ -1,0 +1,11 @@
+{
+    "diagnostics.globals": [
+        "imap",
+        "exec",
+        "map",
+        "filter",
+        "sh",
+        "readdir",
+        "read"
+    ]
+}

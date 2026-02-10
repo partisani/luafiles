@@ -1,9 +1,9 @@
 require "lib"
 require "conf"
 
-local ghostty = require "conf.lua.ghostty"
 local keyval  = require "conf.lua.keyval"
 local toml    = require "conf.lua.toml"
+local json    = require "conf.lua.json"
 
 local scheme_str = table.concat(
     imap(conf.scheme,
@@ -13,15 +13,16 @@ local scheme_str = table.concat(
 
 _G.init = {
     files = {
-        ["~/.config/kak/kakrc"]             = read "conf/kakrc",
-        ["~/.config/fontconfig/fonts.conf"] = read "conf/fontconfig",
-        ["~/.config/niri/config.kdl"]       = read "conf/niri",
-        ["~/.rcrc"]                         = read "conf/rcrc",
-        ["~/.config/user-dirs.dirs"]        = read "conf/misc/xdg-dirs",
-        ["~/.config/eww/"]                  = readdir "conf/eww/",
-        ["~/.rustfmt.toml"]                 = toml(conf.rustfmt),
-        ["~/.config/ghostty/config"]        = ghostty(conf.ghostty),
-        ["~/.config/swaylock/config"]       = keyval(conf.swaylock)
+        ["~/.config/kak/kakrc"]                = read "conf/kakrc",
+        ["~/.config/fontconfig/fonts.conf"]    = read "conf/fontconfig",
+        ["~/.config/niri/config.kdl"]          = read "conf/niri",
+        ["~/.xinitrc"]                         = read "conf/xinit",
+        ["~/.config/user-dirs.dirs"]           = read "conf/misc/xdg-dirs",
+        ["~/.config/eww/"]                     = readdir "conf/eww/",
+        ["~/.rustfmt.toml"]                    = toml(conf.rustfmt),
+        ["~/.config/alacritty/alacritty.toml"] = toml(conf.alacritty),
+        ["~/.config/swaylock/config"]          = keyval(conf.swaylock),
+        -- ["~/GNUstep/Library/WindowMaker/Styles/Tinted.style"] = read "conf/wmaker",
     },
     tasks = {
         wallpapers = {
