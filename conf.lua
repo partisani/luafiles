@@ -1,12 +1,13 @@
 _G.conf = {
     distro = "void",
-    scheme = require "assets.schemes" "base16.16.vulcan",
+    -- scheme = require "assets.schemes" "homemade.teto",
+    scheme = require "assets.schemes" "base16.16.heetch",
     path   = "/home/partisani/config",
-    font   = { mono = "OCR A BT", serif = "OCR A BT", sans_serif = "OCR A BT" },
+    font   = { mono = "NanumGothicCoding", serif = "NanumGothicCoding", sans_serif = "NanumGothicCoding" },
 }
 
 conf.apps = {
-    term = "ghostty",
+    term = "alacritty",
     launcher = "wmenu -i"
         .. " -N " .. conf.scheme.rgb0
         .. " -n " .. conf.scheme.rgb5
@@ -16,59 +17,69 @@ conf.apps = {
         .. " -s " .. conf.scheme.rgb0
 }
 
-conf.ghostty = {
-    font_size = 10,
-    font_family = conf.font.mono,
-    window_padding_x = 20,
-    window_padding_y = 20,
-    adjust_cell_height = "20%",
-
-    background = conf.scheme.rgb0,
-    foreground = conf.scheme.rgb5,
-
-    selection_background = conf.scheme.rgb2,
-    selection_foreground = conf.scheme.rgb0,
-
-    palette = {
-        [0] = conf.scheme.rgb0,
-              conf.scheme.rgb8,
-              conf.scheme.rgbB,
-              conf.scheme.rgbA,
-              conf.scheme.rgbD,
-              conf.scheme.rgbE,
-              conf.scheme.rgbC,
-              conf.scheme.rgb6 or conf.scheme.rgb3, -- base24
-              conf.scheme.rgb2 or conf.scheme.rgb8, -- base24
-              conf.scheme.rgbI or conf.scheme.rgbB, -- base24
-              conf.scheme.rgbK or conf.scheme.rgbA, -- base24
-              conf.scheme.rgbJ or conf.scheme.rgbD, -- base24
-              conf.scheme.rgbM or conf.scheme.rgbE, -- base24
-              conf.scheme.rgbN or conf.scheme.rgbC, -- base24
-              conf.scheme.rgbL or conf.scheme.rgb5, -- base24
-              conf.scheme.rgb7,
-              conf.scheme.rgb9,
-              conf.scheme.rgbF,
-              conf.scheme.rgb1,
-              conf.scheme.rgb2,
-              conf.scheme.rgb4,
-              conf.scheme.rgb6
+conf.alacritty = {
+    font = {
+        size = 10,
+        normal = { family = conf.font.mono },
+        offset = { x = 0, y = 3 },
     },
 
-    keybind = {
-        ["ctrl+q"] = "close_window",
-        ["performable:ctrl+c"] = "copy_to_clipboard"
+    window = {
+        padding = { x = 15, y = 15 },
     },
 
-    -- env = {
-    --     GTK_IM_MODULE = "simple"
-    -- }
+    keyboard = {
+        bindings = {
+            { mods = "Control", key = "Return", action = "SpawnNewInstance" }
+        },
+    },
+
+    colors = {
+        draw_bold_text_with_bright_colors = false,
+
+        primary = {
+            foreground = conf.scheme.hex5,
+            background = conf.scheme.hex0
+        },
+        normal = {
+            black   = conf.scheme.hex0,
+            red     = conf.scheme.hex8,
+            green   = conf.scheme.hexB,
+            yellow  = conf.scheme.hexA,
+            blue    = conf.scheme.hexD,
+            magenta = conf.scheme.hexE,
+            cyan    = conf.scheme.hexC,
+            white   = conf.scheme.hex5
+        },
+        bright = {
+            black   = conf.scheme.hex3,
+            red     = conf.scheme.hex9,
+            green   = conf.scheme.hex1,
+            yellow  = conf.scheme.hex2,
+            blue    = conf.scheme.hex4,
+            magenta = conf.scheme.hex6,
+            cyan    = conf.scheme.hexF,
+            white   = conf.scheme.hex7
+        },
+    },
 }
 
 conf.niri = {
-    gaps = 30,
-    
+    gaps = 20,
+
     border = {
-        --width = 4,
+        false,
+        width = 4,
+        color_active = conf.scheme.hex5,
+        color_inactive = conf.scheme.hex5 .. "77",
+        radius = 0,
+    },
+
+    shadow = {
+        false,
+        softness = 0,
+        spread = 0,
+        offset = { x = 0, y = 20 },
         color_active = conf.scheme.hex5,
         color_inactive = conf.scheme.hex5 .. "77",
     },
@@ -78,7 +89,7 @@ conf.niri = {
         len = 1.0,
         gap = 10
     },
-    
+
     startup = {
         "eww daemon; eww open-many status:main status:snd --arg main:mon=0 --arg snd:mon=1",
         "swww-daemon",

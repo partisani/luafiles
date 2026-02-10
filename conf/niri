@@ -1,22 +1,26 @@
 input {
     keyboard {
         xkb {
-            layout "br"
+            layout  "br"
+            model   "thinkpad"
             options "lv3:caps_switch_capslock_with_ctrl,ctrl:nocaps"
         }
     }
 
     touchpad {
-        tap
-        natural-scroll
+        off
     }
 
     warp-mouse-to-focus
     focus-follows-mouse max-scroll-amount="33%"
 }
 
-output "VGA-1" {
-    position x=-1366 y=0
+gestures {
+    hot-corners { off; }
+}
+
+output "Lenovo Group Limited LEN E2003bA VA000174" {
+    position x=-1600 y=0
 }
 
 layout {
@@ -41,9 +45,20 @@ layout {
     focus-ring { off; }
 
     border {
+        ::niri.border[1] and "" or "off"::
         width ::niri.border.width or 0::
 
         active-color "::niri.border.color_active::"
+        inactive-color "::niri.border.color_inactive::"
+    }
+
+    shadow {
+        ::niri.shadow[1] and "on" or ""::
+        softness ::niri.shadow.softness or 0::
+        spread ::niri.shadow.spread or 0::
+        offset x=::niri.shadow.offset.x or 0:: y=::niri.shadow.offset.y or 0::
+
+        color "::niri.border.color_active::"
         inactive-color "::niri.border.color_inactive::"
     }
 
@@ -73,7 +88,6 @@ prefer-no-csd
 screenshot-path "~/files/pictures/screenshots/screenshot-%Y.%m.%d %H:%M:%S.png"
 
 animations {
-    // off
     // slowdown 3.0
 }
 
@@ -81,6 +95,11 @@ overview {
     workspace-shadow {
         off
     }
+}
+
+window-rule {
+    geometry-corner-radius ::niri.border.radius::
+    clip-to-geometry true
 }
 
 // Open the Firefox picture-in-picture player as floating by default
@@ -96,10 +115,9 @@ layer-rule {
 }
 
 binds {
-    Mod+Q               { spawn-sh "GTK_IM_MODULE=simple ::apps.term::"; }
-    Mod+R               { spawn-sh "cd ::path::; bin/launch"; }
-    Mod+MouseMiddle     { spawn-sh "cd ::path::; bin/launch"; }
-    Mod+C  repeat=false { close-window; }
+    Mod+Return          { spawn-sh "GTK_IM_MODULE=simple ::apps.term::"; }
+    Mod+semicolon       { spawn-sh "cd ::path::; bin/launch"; }
+    Mod+Q  repeat=false { close-window; }
     Mod5+E repeat=false { toggle-overview; }
 
 
@@ -119,47 +137,33 @@ binds {
     Mod+F11 allow-when-locked=true { spawn-sh "playerctl previous"; }
     Mod+F12 allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    Mod+W    { focus-window-or-workspace-up; }
-    Mod+A  { focus-column-or-monitor-left; }
-    Mod+S  { focus-window-or-workspace-down; }
-    Mod+D { focus-column-or-monitor-right; }
+    Mod+Up    { focus-window-or-workspace-up; }
+    Mod+Left  { focus-column-or-monitor-left; }
+    Mod+Down  { focus-window-or-workspace-down; }
+    Mod+Right { focus-column-or-monitor-right; }
 
-    Mod5+W    { move-window-up-or-to-workspace-up; }
-    Mod5+A  { move-column-left-or-to-monitor-left; }
-    Mod5+S  { move-window-down-or-to-workspace-down; }
-    Mod5+D { move-column-right-or-to-monitor-right; }
+    Mod5+Up    { move-window-up-or-to-workspace-up; }
+    Mod5+Left  { move-column-left-or-to-monitor-left; }
+    Mod5+Down  { move-window-down-or-to-workspace-down; }
+    Mod5+Right { move-column-right-or-to-monitor-right; }
 
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
-    Mod5+Home { move-column-to-first; }
-    Mod5+End  { move-column-to-last; }
-
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-    Mod5+Page_Down { move-column-to-workspace-down; }
-    Mod5+Page_Up   { move-column-to-workspace-up; }
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+Left { focus-monitor-left; }
+    Mod+Shift+Right { focus-monitor-right; }
 
     Mod+WheelScrollDown  cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp    cooldown-ms=150 { focus-workspace-up; }
-    Mod5+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod5+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
-
-    Mod+Shift+WheelScrollDown  { focus-column-or-monitor-right; }
+    Mod+Shift+WheelScrollDown { focus-column-or-monitor-right; }
     Mod+Shift+WheelScrollUp   { focus-column-or-monitor-left; }
-    Mod5+Shift+WheelScrollDown { move-column-right-or-to-monitor-right; }
-    Mod5+Shift+WheelScrollUp  { move-column-left-or-to-monitor-left; }
 
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
+    Mod+1  { focus-workspace 1; }
+    Mod+2  { focus-workspace 2; }
+    Mod+3  { focus-workspace 3; }
+    Mod+4  { focus-workspace 4; }
+    Mod+5  { focus-workspace 5; }
+    Mod+6  { focus-workspace 6; }
+    Mod+7  { focus-workspace 7; }
+    Mod+8  { focus-workspace 8; }
+    Mod+9  { focus-workspace 9; }
     Mod5+1 { move-column-to-workspace 1; }
     Mod5+2 { move-column-to-workspace 2; }
     Mod5+3 { move-column-to-workspace 3; }
@@ -173,11 +177,11 @@ binds {
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    Mod5+R { switch-preset-column-width; }
+    Mod5+R       { switch-preset-column-width; }
     Mod5+Shift+R { switch-preset-window-height; }
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
-    Mod5+F { expand-column-to-available-width; }
+    Mod+F        { maximize-column; }
+    Mod+Shift+F  { fullscreen-window; }
+    Mod5+F       { expand-column-to-available-width; }
 
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
@@ -185,7 +189,7 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    Mod+Space   { toggle-window-floating; }
+    Mod+Space       { toggle-window-floating; }
     Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
@@ -193,13 +197,13 @@ binds {
     // rather than stacked on top of each other.
     Mod+T { toggle-column-tabbed-display; }
 
-    Print { screenshot; }
+    Print      { screenshot; }
     Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Alt+Print  { screenshot-window; }
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-    Mod+Shift+E { quit; }
+    Mod+Shift+E  { quit; }
     Mod5+Shift+E { spawn-sh "swaylock"; }
 
     Mod+Shift+P { power-off-monitors; }

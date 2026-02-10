@@ -1,3 +1,10 @@
+# Fix theme contrast
+#set-face global   PrimarySelection black,blue+F
+#set-face global SecondarySelection black,green+F
+#set-face global     MenuForeground black,blue+d
+#set-face global     MenuBackground black,white
+#set-face global           MenuInfo black
+
 # Nicer colorscheme
 colorscheme plain
 
@@ -31,6 +38,12 @@ hook global BufCreate .* %{
 hook global WinSetOption filetype=(?!makefile).* %{
     map global insert <tab> '<a-;><a-gt>'
     map global insert <s-tab> '<a-;><a-lt>'
+}
+
+# Fix go identing
+hook global WinSetOption filetype=go %{
+    set buffer indentwidth 0
+    set buffer tabstop 4
 }
 
 # Start LSP
